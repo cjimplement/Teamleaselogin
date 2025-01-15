@@ -21,7 +21,7 @@ jobs:
       # Install dependencies
       - name: Install dependencies
         run: |
-          npm ci --production
+          npm ci --omit=dev
 
       # # Install Puppeteer dependencies (specific to GitHub Actions)
       # - name: Install Puppeteer dependencies

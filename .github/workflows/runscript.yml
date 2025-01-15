@@ -1,0 +1,36 @@
+name: Run Script
+
+on:
+  schedule:
+    - cron: "4 5 * * 1-6"
+  workflow_dispatch:
+
+jobs:
+  puppeteer:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "lts/*"
+
+      # Install dependencies
+      - name: Install dependencies
+        run: |
+          npm ci --production
+
+      # # Install Puppeteer dependencies (specific to GitHub Actions)
+      # - name: Install Puppeteer dependencies
+      #   run: |
+      #     sudo apt-get update
+      #     sudo apt-get install -y wget curl
+      #     sudo apt-get install -y libx11-dev libx11-xcb-dev libgbm-dev libgtk-3-0 libnss3 libxss1 libasound2
+
+      # Run your Puppeteer script
+      - name: Run Puppeteer script
+        run: |
+          npm start

@@ -2,7 +2,7 @@ name: Run Script
 
 on:
   schedule:
-    - cron: "4 5 * * 1-6"
+    - cron: "28 2 * * 1-6"
   workflow_dispatch:
 
 jobs:
@@ -18,7 +18,6 @@ jobs:
         with:
           node-version: "lts/*"
 
-      # Install dependencies
       - name: Install dependencies
         run: |
           npm ci --omit=dev
@@ -30,7 +29,9 @@ jobs:
       #     sudo apt-get install -y wget curl
       #     sudo apt-get install -y libx11-dev libx11-xcb-dev libgbm-dev libgtk-3-0 libnss3 libxss1 libasound2
 
-      # Run your Puppeteer script
-      - name: Run Puppeteer script
+      - name: Run Puppeteer
         run: |
           npm start
+        env:
+          USERNAME: ${{ secrets.USERNAME }}
+          PASSWORD: ${{ secrets.PASSWORD }}

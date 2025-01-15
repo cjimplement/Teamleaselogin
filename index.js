@@ -24,24 +24,22 @@ import puppeteer from "puppeteer";
     timeout: 6e4,
   });
 
-  console.log(process.env.USERNAME, process.env.PASSWORD);
+  await page.waitForSelector("#txtuserid");
+  await page.type("#txtuserid", process.env.USERNAME);
 
-  // await page.waitForSelector("#txtuserid");
-  // await page.type("#txtuserid", process.env.USERNAME);
+  await page.waitForSelector("#txtpassword");
+  await page.type("#txtpassword", process.env.PASSWORD);
 
-  // await page.waitForSelector("#txtpassword");
-  // await page.type("#txtpassword", process.env.PASSWORD);
+  await page.waitForSelector("#btnsubmit");
+  await page.click("#btnsubmit");
 
-  // await page.waitForSelector("#btnsubmit");
-  // await page.click("#btnsubmit");
+  await page.waitForNavigation({ waitUntil: "load", timeout: 6e4 });
 
-  // await page.waitForNavigation({ waitUntil: "load", timeout: 6e4 });
+  await page.waitForSelector("#btnchkin");
+  await page.click("#btnchkin");
 
-  // await page.waitForSelector("#btnchkin");
-  // await page.click("#btnchkin");
-
-  // await page.waitForSelector("button.confirm", { state: "visible" });
-  // await page.click("button.confirm");
+  await page.waitForSelector("button.confirm", { state: "visible" });
+  await page.click("button.confirm");
 
   await page.close();
   await browser.close();

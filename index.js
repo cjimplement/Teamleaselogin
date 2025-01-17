@@ -25,7 +25,7 @@ import puppeteer from "puppeteer";
   });
 
   await page.waitForSelector("#txtuserid");
-  await page.type("#txtuserid", process.env.USERNAME);
+  await page.type("#txtuserid", process.env.USERID);
 
   await page.waitForSelector("#txtpassword");
   await page.type("#txtpassword", process.env.PASSWORD);

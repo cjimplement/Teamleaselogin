@@ -8,7 +8,7 @@ import puppeteer from "puppeteer";
     // headless: false,
     defaultViewport: null,
     protocolTimeout: 6e4,
-    args: ["--start-maximized"],
+    args: ["--no-sandbox", "--start-maximized"],
     // userDataDir: "./.pupp",
     // executablePath:
     //   "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",

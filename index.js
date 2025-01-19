@@ -1,6 +1,6 @@
 import puppeteer from "puppeteer";
-import { config } from "dotenv";
-config();
+// import { config } from "dotenv";
+// config();
 
 (async () => {
   const browser = await puppeteer.launch({
@@ -57,4 +57,4 @@ config();
 
   await page.close();
   await browser.close();
-})().catch(console.log);
+})();

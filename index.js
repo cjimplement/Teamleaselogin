@@ -5,7 +5,7 @@ import puppeteer from "puppeteer";
 (async () => {
   const browser = await puppeteer.launch({
     slowMo: 50,
-    // headless: false,
+    headless: false,
     defaultViewport: null,
     protocolTimeout: 6e4,
     args: ["--no-sandbox", "--start-maximized"],
@@ -35,7 +35,7 @@ import puppeteer from "puppeteer";
   await page.waitForSelector("#btnsubmit");
   await page.click("#btnsubmit");
 
-  await page.waitForNavigation({ waitUntil: "load", timeout: 6e4 });
+  await page.waitForNavigation({ waitUntil: "networkidle0", timeout: 6e4 });
 
   // await page.waitForSelector("#btnchkin");
   // await page.click("#btnchkin");
@@ -48,7 +48,7 @@ import puppeteer from "puppeteer";
         return true;
       }
     },
-    { polling: "raf" },
+    { polling: "raf", timeout: 6e4 },
     "#btnchkin"
   );
 
